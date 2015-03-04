@@ -4,17 +4,17 @@ import configparser
 nodes=[]
 links=[]
 def dfs( currnode,parentnum ):
-    nodes.append( {'name':currnode['name']} )
+    nodes.append( {'name':currnode['name'],'icon':currnode['icon']} )
     currnum = len(nodes)-1
     if parentnum is not None:
-        links.append( {"source":parentnum,"target":currnum} )
+        links.append( {'source':parentnum,'target':currnum} )
     for num in currnode:
-        if num != 'name':
+        if num != 'name' and num !='icon' :
             dfs( currnode[num],currnum )
 
 
 config = configparser.ConfigParser( strict=False )
-dirtree = { 'name':'Kali' }
+dirtree = { 'name':'Kali','icon':'kali-menu.png' }
 destdir = 'Kali/desktop-directories'
 for filename in os.listdir(destdir):
     tdic = dirtree
@@ -28,6 +28,7 @@ for filename in os.listdir(destdir):
     if tdic != dirtree:
         config.read( os.path.join(destdir,filename) )
         tdic['name'] = config['Desktop Entry']['Name[zh_CN]']
+        tdic['icon'] = config['Desktop Entry']['Icon']
 
 dfs( dirtree,None )
 print(nodes)

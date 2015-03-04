@@ -39,10 +39,12 @@ d3.json("graph.json", function(json) {
       .data(json.links)
     .enter().append("svg:line");
 
-  var node = svg.selectAll("circle")
+  var node = svg.selectAll("image")
       .data(json.nodes)
-    .enter().append("svg:circle")
-      .attr("r", r - .75)
+    .enter().append("image")
+	.attr("width",30)
+	.attr("height",30)
+      .attr("xlink:href", function(d) { return 'Kali/icons/'+d.icon; })
       .attr("text", function(d) { return d.name; })
       .call(force.drag);
 
@@ -61,8 +63,8 @@ d3.json("graph.json", function(json) {
       d.target.y += k;
     });
 
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+    node.attr("x", function(d) { return d.x-15; })
+        .attr("y", function(d) { return d.y-15; });
 
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
