@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=recordmydesktop
+Encoding=UTF-8
+Exec=sh -c "recordmydesktop -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=13-02-media-capture;
+X-Kali-Package=recordmydesktop

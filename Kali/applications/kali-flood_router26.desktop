@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=flood_router26
+Encoding=UTF-8
+Exec=sh -c "flood_router26;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=10-01-network-stress-testing;
+X-Kali-Package=thc-ipv6

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=test frosch reader
+Encoding=UTF-8
+Exec=sh -c "froschtest.py -R RFIDIOt.rfidiot.READER_FROSCH -l /dev/ttyUSB0 -s 9600;${SHELL:-bash}"
+Icon=kali-menu.png
+Name=test frosch reader
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=05-03-04-rfidiot-frosch;
+X-Kali-Package=python-rfidiot

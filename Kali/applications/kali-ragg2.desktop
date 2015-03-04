@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ragg2
+Encoding=UTF-8
+Exec=sh -c "ragg2 -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=09-03-misc-tools;
+X-Kali-Package=radare2

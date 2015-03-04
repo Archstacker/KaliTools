@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pattern offset
+Encoding=UTF-8
+Exec=sh -c "cd /usr/share/metasploit-framework/tools && ./pattern_offset.rb;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=06-10-exploit-dev;
+X-Kali-Package=metasploit-framework

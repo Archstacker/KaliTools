@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=xplico start
+Encoding=UTF-8
+Exec=sh -c "service xplico start;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=14-12-xplico-service;01-05-network-traffic-analysis;12-09-network-forensics;
+X-Kali-Package=xplico

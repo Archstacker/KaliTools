@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=w3af
+Encoding=UTF-8
+Exec=sh -c "w3af"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=03-05-web-vulnerability-scanners;
+X-Kali-Package=w3af

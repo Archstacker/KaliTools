@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=jd-gui
+Encoding=UTF-8
+Exec=sh -c "jd-gui"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=09-02-disassembly;
+X-Kali-Package=jd-gui

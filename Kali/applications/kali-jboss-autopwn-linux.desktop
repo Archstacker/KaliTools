@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=jboss-autopwn-linux
+Encoding=UTF-8
+Exec=sh -c "jboss-linux;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=06-04-network-exploitation;
+X-Kali-Package=jboss-autopwn

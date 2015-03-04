@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=setoolkit
+Encoding=UTF-8
+Exec=sh -c "setoolkit;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=06-06-social-engineering-toolkit;
+X-Kali-Package=set

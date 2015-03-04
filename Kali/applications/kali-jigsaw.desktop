@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=jigsaw
+Encoding=UTF-8
+Exec=sh -c "jigsaw -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=01-07-osint-analysis;
+X-Kali-Package=jigsaw

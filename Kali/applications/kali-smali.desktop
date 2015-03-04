@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=smali
+Encoding=UTF-8
+Exec=sh -c "smali --help;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=11-01-android-tools;
+X-Kali-Package=smali

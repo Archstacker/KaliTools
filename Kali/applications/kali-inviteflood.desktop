@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=inviteflood
+Encoding=UTF-8
+Exec=sh -c "inviteflood -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=07-02-voip-tools;10-03-voip-stress-testing;
+X-Kali-Package=inviteflood

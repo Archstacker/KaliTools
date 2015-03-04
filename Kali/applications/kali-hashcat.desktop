@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=hashcat
+Encoding=UTF-8
+Exec=sh -c "hashcat --help;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=04-02-offline-attacks;
+X-Kali-Package=hashcat

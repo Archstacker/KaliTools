@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=apache2 stop
+Encoding=UTF-8
+Exec=sh -c "service apache2 stop;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=14-02-httpd;
+X-Kali-Package=apache2

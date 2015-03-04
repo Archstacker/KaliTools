@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=rafind2
+Encoding=UTF-8
+Exec=sh -c "rafind2 -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=09-03-misc-tools;
+X-Kali-Package=radare2

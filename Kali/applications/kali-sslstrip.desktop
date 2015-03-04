@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sslstrip
+Encoding=UTF-8
+Exec=sh -c "sslstrip -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=01-13-ssl-analysis;07-04-network-spoofing;
+X-Kali-Package=sslstrip

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=metasploit community / pro
+Encoding=UTF-8
+Exec=sh -c "/opt/metasploit/scripts/launchui.sh"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=06-02-metasploit-framework;
+X-Kali-Package=metasploit

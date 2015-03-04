@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=p0f
+Encoding=UTF-8
+Exec=sh -c "p0f -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=01-05-network-traffic-analysis;12-09-network-forensics;
+X-Kali-Package=p0f

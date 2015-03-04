@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dff
+Encoding=UTF-8
+Exec=sh -c "dff;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=12-08-forensic-suites;
+X-Kali-Package=dff

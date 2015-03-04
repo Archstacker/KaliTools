@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=bruteforce mifare
+Encoding=UTF-8
+Exec=sh -c "loginall.py -R RFIDIOt.rfidiot.READER_PCSC;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=05-03-02-rfidiot-pcsc;
+X-Kali-Package=python-rfidiot

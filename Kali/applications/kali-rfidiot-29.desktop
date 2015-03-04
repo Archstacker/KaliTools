@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=calculate jcop mifare keys
+Encoding=UTF-8
+Exec=sh -c "mifarekeys.py ;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=05-03-02-rfidiot-pcsc;
+X-Kali-Package=python-rfidiot

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=weevely
+Encoding=UTF-8
+Exec=sh -c "weevely;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=08-03-web-backdoors;
+X-Kali-Package=weevely

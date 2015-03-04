@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=clang
+Encoding=UTF-8
+Exec=sh -c "clang --help;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=09-03-misc-tools;
+X-Kali-Package=clang

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=rasm2
+Encoding=UTF-8
+Exec=sh -c "rasm2;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=09-02-disassembly;
+X-Kali-Package=radare2

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=community / pro start
+Encoding=UTF-8
+Exec=sh -c "/opt/metasploit/scripts/start.sh;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=14-09-metasploit-service;
+X-Kali-Package=metasploit

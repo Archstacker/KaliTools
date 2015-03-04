@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=truecrypt
+Encoding=UTF-8
+Exec=sh -c "truecrypt -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=13-01-evidence-management;
+X-Kali-Package=truecrypt

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=implementation6d
+Encoding=UTF-8
+Exec=sh -c "implementation6d;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=01-09-service-fingerprinting;
+X-Kali-Package=thc-ipv6

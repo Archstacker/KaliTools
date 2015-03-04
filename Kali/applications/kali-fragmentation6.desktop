@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=fragmentation6
+Encoding=UTF-8
+Exec=sh -c "fragmentation6;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=10-01-network-stress-testing;
+X-Kali-Package=thc-ipv6

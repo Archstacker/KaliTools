@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dnsdict6
+Encoding=UTF-8
+Exec=sh -c "dnsdict6;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=01-01-dns-analysis;
+X-Kali-Package=thc-ipv6

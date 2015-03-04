@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=aircrack-ng
+Encoding=UTF-8
+Exec=sh -c "aircrack-ng --help;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=05-01-wireless-tools;top10;
+X-Kali-Package=aircrack-ng

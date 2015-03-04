@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=redir6
+Encoding=UTF-8
+Exec=sh -c "redir6;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=07-04-network-spoofing;
+X-Kali-Package=thc-ipv6

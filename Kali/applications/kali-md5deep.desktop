@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=md5deep
+Encoding=UTF-8
+Exec=sh -c "md5deep -h;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=12-06-forensic-hashing-tools;
+X-Kali-Package=md5deep

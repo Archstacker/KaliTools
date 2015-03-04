@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=sshd restart
+Encoding=UTF-8
+Exec=sh -c "service ssh restart;${SHELL:-bash}"
+Icon=kali-menu.png
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=14-06-sshd;
+X-Kali-Package=openssh-server
