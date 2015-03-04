@@ -3,18 +3,20 @@ import configparser
 
 nodes=[]
 links=[]
+dirnums={}
 def dfs( currnode,parentnum ):
     nodes.append( {'name':currnode['name']} )
     currnum = len(nodes)-1
+    dirnums[currnode['dirname']] = currnum
     if parentnum is not None:
         links.append( {"source":parentnum,"target":currnum} )
     for num in currnode:
-        if num != 'name':
+        if num != 'name' and num != 'dirname':
             dfs( currnode[num],currnum )
 
 
 config = configparser.ConfigParser( strict=False )
-dirtree = { 'name':'Kali' }
+dirtree = { 'name':'Kali','dirname':'Kali' }
 destdir = 'Kali/desktop-directories'
 for filename in os.listdir(destdir):
     tdic = dirtree
@@ -28,7 +30,19 @@ for filename in os.listdir(destdir):
     if tdic != dirtree:
         config.read( os.path.join(destdir,filename) )
         tdic['name'] = config['Desktop Entry']['Name[zh_CN]']
+        tdic['dirname'] = filename.split('.')[0]
 
 dfs( dirtree,None )
+destdir = 'Kali/applications'
+for filename in os.listdir(destdir):
+    config.read( os.path.join(destdir,filename) )
+    nodes.append( {"name":config['Desktop Entry']['name']} )
+    currnum = len(nodes)-1
+    for category in config['Desktop Entry']['Categories'].split(';'):
+        try:
+            if category != 'top10' and category != '' :
+                links.append( {"source":dirnums[category],"target":currnum} )
+        except:
+            pass
 print(nodes)
 print(links)
