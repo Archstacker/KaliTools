@@ -20,29 +20,33 @@ line {
   <body>
     <script type="text/javascript">
 
-var w = 1300,
-    h = 1000,
+var width = 6000,
+    height = 6000,
+    img_w = 30,
+    img_h = 30,
     r = 6,
     fill = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-500)
+    .charge(-2000)
     .linkDistance(1)
-    .size([w, h*1.5]);
+    .size([width, height*1.15]);
 
 var svg = d3.select("body").append("svg:svg")
-    .attr("width", w)
-    .attr("height", h);
+    .attr("width", width)
+    .attr("height", height);
 
 d3.json("graph.json", function(json) {
   var link = svg.selectAll("line")
       .data(json.links)
     .enter().append("svg:line");
 
-  var node = svg.selectAll("circle")
+  var node = svg.selectAll("image")
       .data(json.nodes)
-    .enter().append("svg:circle")
-      .attr("r", r - .75)
+    .enter().append("image")
+	.attr("width",img_w)
+	.attr("height",img_h)
+      .attr("xlink:href", function(d) { return 'Kali/icons/'+d.icon; })
       .attr("text", function(d) { return d.name; })
       .call(force.drag);
 
@@ -51,6 +55,16 @@ d3.json("graph.json", function(json) {
       .links(json.links)
       .on("tick", tick)
       .start();
+  var nodetext = svg.selectAll('.nodetext')
+      .data(json.nodes)
+      .enter()
+      .append("text")
+      .attr("class","nodetext")
+      .attr("dx",-20)
+      .attr("dy",20)
+      .text(function(d){
+          return d.name;
+      });
 
   function tick(e) {
 
@@ -61,13 +75,16 @@ d3.json("graph.json", function(json) {
       d.target.y += k;
     });
 
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+    node.attr("x", function(d) { return d.x-img_w/2; })
+        .attr("y", function(d) { return d.y-img_h/2; });
 
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
+
+    nodetext.attr("x",function(d){ return d.x });
+    nodetext.attr("y",function(d){ return d.y + 15 });
   }
 });
 

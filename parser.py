@@ -5,18 +5,18 @@ nodes=[]
 links=[]
 dirnums={}
 def dfs( currnode,parentnum ):
-    nodes.append( {'name':currnode['name']} )
+    nodes.append( {'name':currnode['name'],'icon':currnode['icon']} )
     currnum = len(nodes)-1
     dirnums[currnode['dirname']] = currnum
     if parentnum is not None:
-        links.append( {"source":parentnum,"target":currnum} )
+        links.append( {'source':parentnum,'target':currnum} )
     for num in currnode:
-        if num != 'name' and num != 'dirname':
+        if num != 'name' and num != 'dirname' and num != 'icon':
             dfs( currnode[num],currnum )
 
 
 config = configparser.ConfigParser( strict=False )
-dirtree = { 'name':'Kali','dirname':'Kali' }
+dirtree = { 'name':'Kali','dirname':'Kali','icon':'kali-menu.png' }
 destdir = 'Kali/desktop-directories'
 for filename in os.listdir(destdir):
     tdic = dirtree
@@ -31,12 +31,13 @@ for filename in os.listdir(destdir):
         config.read( os.path.join(destdir,filename) )
         tdic['name'] = config['Desktop Entry']['Name[zh_CN]']
         tdic['dirname'] = filename.split('.')[0]
+        tdic['icon'] = config['Desktop Entry']['Icon']
 
 dfs( dirtree,None )
 destdir = 'Kali/applications'
 for filename in os.listdir(destdir):
     config.read( os.path.join(destdir,filename) )
-    nodes.append( {"name":config['Desktop Entry']['name']} )
+    nodes.append( {"name":config['Desktop Entry']['name'],"icon":'kali-menu.png'} )
     currnum = len(nodes)-1
     for category in config['Desktop Entry']['Categories'].split(';'):
         try:
