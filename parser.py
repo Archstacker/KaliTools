@@ -1,7 +1,20 @@
 import os
 import configparser
+
+nodes=[]
+links=[]
+def dfs( currnode,parentnum ):
+    nodes.append( {'name':currnode['name']} )
+    currnum = len(nodes)-1
+    if parentnum is not None:
+        links.append( {"source":parentnum,"target":currnum} )
+    for num in currnode:
+        if num != 'name':
+            dfs( currnode[num],currnum )
+
+
 config = configparser.ConfigParser( strict=False )
-dirtree = {}
+dirtree = { 'name':'Kali' }
 destdir = 'Kali/desktop-directories'
 for filename in os.listdir(destdir):
     tdic = dirtree
@@ -15,3 +28,7 @@ for filename in os.listdir(destdir):
     if tdic != dirtree:
         config.read( os.path.join(destdir,filename) )
         tdic['name'] = config['Desktop Entry']['Name[zh_CN]']
+
+dfs( dirtree,None )
+print(nodes)
+print(links)
