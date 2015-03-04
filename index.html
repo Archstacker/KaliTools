@@ -20,13 +20,13 @@ line {
   <body>
     <script type="text/javascript">
 
-var w = 1300,
-    h = 1000,
+var w = 3000,
+    h = 3000,
     r = 6,
     fill = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-500)
+    .charge(-5000)
     .linkDistance(1)
     .size([w, h*1.5]);
 
@@ -53,6 +53,16 @@ d3.json("graph.json", function(json) {
       .links(json.links)
       .on("tick", tick)
       .start();
+  var nodetext = svg.selectAll('.nodetext')
+      .data(json.nodes)
+      .enter()
+      .append("text")
+      .attr("class","nodetext")
+      .attr("dx",-20)
+      .attr("dy",20)
+      .text(function(d){
+          return d.name;
+      });
 
   function tick(e) {
 
@@ -70,6 +80,9 @@ d3.json("graph.json", function(json) {
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
+
+    nodetext.attr("x",function(d){ return d.x });
+    nodetext.attr("y",function(d){ return d.y + 15 });
   }
 });
 
