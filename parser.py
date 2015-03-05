@@ -5,23 +5,25 @@ nodes=[]
 links=[]
 dirnums={}
 def dfs( currnode,parentnum ):
-    nodes.append( {'name':currnode['name'],'icon':currnode['icon']} )
+    nodes.append( {'name':currnode['name'],'icon':currnode['icon'],'power':currnode['power']} )
     currnum = len(nodes)-1
     dirnums[currnode['dirname']] = currnum
     if parentnum is not None:
         links.append( {'source':parentnum,'target':currnum} )
     for num in currnode:
-        if num != 'name' and num != 'dirname' and num != 'icon':
+        if num != 'name' and num != 'dirname' and num != 'icon' and num != 'power' :
             dfs( currnode[num],currnum )
 
 
 config = configparser.ConfigParser( strict=False )
-dirtree = { 'name':'Kali','dirname':'Kali','icon':'kali-menu.png' }
+dirtree = { 'name':'Kali','dirname':'Kali','icon':'kali-menu.png','power':10 }
 destdir = 'Kali/desktop-directories'
 for filename in os.listdir(destdir):
     tdic = dirtree
+    power = 8
     for num in filename.split('-',3):
         if num[0].isdigit() and num[1].isdigit():
+            power = power - 2
             try:
                 tdic = tdic[num]
             except:
@@ -32,17 +34,18 @@ for filename in os.listdir(destdir):
         tdic['name'] = config['Desktop Entry']['Name[zh_CN]']
         tdic['dirname'] = filename.split('.')[0]
         tdic['icon'] = config['Desktop Entry']['Icon']
+        tdic['power'] = power
 
 dfs( dirtree,None )
 destdir = 'Kali/applications'
 for filename in os.listdir(destdir):
     config.read( os.path.join(destdir,filename) )
-    nodes.append( {"name":config['Desktop Entry']['name'],"icon":'kali-menu.png'} )
+    nodes.append( {'name':config['Desktop Entry']['name'],'icon':'kali-menu.png','power':1} )
     currnum = len(nodes)-1
     for category in config['Desktop Entry']['Categories'].split(';'):
         try:
             if category != 'top10' and category != '' :
-                links.append( {"source":dirnums[category],"target":currnum} )
+                links.append( {'source':dirnums[category],'target':currnum} )
         except:
             pass
 print(nodes)

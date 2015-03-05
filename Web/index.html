@@ -22,8 +22,8 @@ line {
 
 var width = 6000,
     height = 6000,
-    img_w = 30,
-    img_h = 30,
+    img_w = 20,
+    img_h = 20,
     r = 6,
     fill = d3.scale.category20();
 
@@ -44,8 +44,8 @@ d3.json("graph.json", function(json) {
   var node = svg.selectAll("image")
       .data(json.nodes)
     .enter().append("image")
-	.attr("width",img_w)
-	.attr("height",img_h)
+      .attr("width", function(d) {return d.power*img_w })
+      .attr("height", function(d) {return d.power*img_h; })
       .attr("xlink:href", function(d) { return 'icons/'+d.icon; })
       .attr("text", function(d) { return d.name; })
       .call(force.drag);
@@ -55,6 +55,7 @@ d3.json("graph.json", function(json) {
       .links(json.links)
       .on("tick", tick)
       .start();
+
   var nodetext = svg.selectAll('.nodetext')
       .data(json.nodes)
       .enter()
@@ -75,16 +76,16 @@ d3.json("graph.json", function(json) {
       d.target.y += k;
     });
 
-    node.attr("x", function(d) { return d.x-img_w/2; })
-        .attr("y", function(d) { return d.y-img_h/2; });
+    node.attr("x", function(d) { return d.x-img_w*d.power/2; })
+        .attr("y", function(d) { return d.y-img_h*d.power/2; });
 
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
-    nodetext.attr("x",function(d){ return d.x });
-    nodetext.attr("y",function(d){ return d.y + 15 });
+    nodetext.attr("x",function(d){ return d.x-img_w*d.power/4 });
+    nodetext.attr("y",function(d){ return d.y + img_w*d.power/2 });
   }
 });
 
