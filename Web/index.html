@@ -1,130 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
     <title>Force-Directed Layout</title>
     <script type="text/javascript" src="d3/d3.min.js"></script>
     <script type="text/javascript" src="d3-tip/d3-tip.min.js"></script>
-
-<style type="text/css">
-line {
-  stroke: #999;
-}
-
-  .d3-tip {
-    line-height: 1;
-    font-weight: bold;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border-radius: 2px;
-  }
-
-  .d3-tip:after {
-    box-sizing: border-box;
-    display: inline;
-    font-size: 10px;
-    width: 100%;
-    line-height: 1;
-    color: rgba(0, 0, 0, 0.8);
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
-  }
-
-  .d3-tip.n:after {
-    margin: -5px 0 0 0;
-    top: 100%;
-    left: 0;
-  }
-
-  .d3-tip span {
-    color: #ff00c7;
-  }
-    </style>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <script type="text/javascript">
-
-var width = 6000,
-    height = 6000,
-    img_w = 20,
-    img_h = 20,
-    r = 6,
-    fill = d3.scale.category20();
-
-    var tip = d3.tip()
-      .attr('class', 'd3-tip')
-      .html(function(d) { return d.description })
-      .direction('n')
-      .offset([0, 3])
-
-var force = d3.layout.force()
-    .charge(-2000)
-    .linkDistance(1)
-    .size([width, height*1.15]);
-
-var svg = d3.select("body").append("svg:svg")
-    .attr("width", width)
-    .attr("height", height)
-    .call(tip);
-
-d3.json("graph.json", function(json) {
-  var link = svg.selectAll("line")
-      .data(json.links)
-    .enter().append("svg:line");
-
-  var node = svg.selectAll("image")
-      .data(json.nodes)
-    .enter().append("image")
-      .attr("width", function(d) {return d.power*img_w })
-      .attr("height", function(d) {return d.power*img_h; })
-      .attr("xlink:href", function(d) { return 'icons/'+d.icon; })
-      .attr("text", function(d) { return d.name; })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
-      .call(force.drag);
-
-  force
-      .nodes(json.nodes)
-      .links(json.links)
-      .on("tick", tick)
-      .start();
-
-  var nodetext = svg.selectAll('.nodetext')
-      .data(json.nodes)
-      .enter()
-      .append("text")
-      .attr("class","nodetext")
-      .attr("dx",-20)
-      .attr("dy",20)
-      .text(function(d){
-          return d.name;
-      });
-
-  function tick(e) {
-
-    // Push sources up and targets down to form a weak tree.
-    var k = 6 * e.alpha;
-    json.links.forEach(function(d, i) {
-      d.source.y -= k;
-      d.target.y += k;
-    });
-
-    node.attr("x", function(d) { return d.x-img_w*d.power/2; })
-        .attr("y", function(d) { return d.y-img_h*d.power/2; });
-
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    nodetext.attr("x",function(d){ return d.x-img_w*d.power/4 });
-    nodetext.attr("y",function(d){ return d.y + img_w*d.power/2 });
-  }
-});
-
-    </script>
+    <script type="text/javascript" src="draw.js"></script>
   </body>
 </html>
